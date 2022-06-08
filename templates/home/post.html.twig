@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-6 offset-3 mt-5">
+				<h1>{{ post.title }}</h1>
+				<h6 class="mb-2 text-muted">{{ post.author }}, le
+					{{ post.createdAt | date('d/m/Y') }}</h6>
+				<p>{{ post.content }}</p>
+				<a href="/" class="btn btn-primary">Retour</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6 offset-3 mt-5">
+				{{ form(form) }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6 offset-3 mt-5 mb-5">
+					{% for comment in post.comments %}
+						<div class="card" style="margin:5px;">
+							<div class="card-body">
+								<h5 class="card-title">{{ comment.pseudo }}</h5>
+								<h6 class="card-subtitle mb-2 text-muted">{{ comment.createdAt | date('d/m/Y') }}</h6>
+								<p class="card-text">{{ comment.content }}</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+		{% endblock %}

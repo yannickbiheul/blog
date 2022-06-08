@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% for post in posts %}
+				<div class="col-md-4">
+					<div class="card" style="width: 18rem;margin: 10px;">
+						<div class="card-body">
+							<h5 class="card-title">{{ post.title }}</h5>
+							<h6 class="card-subtitle mb-2 text-muted">{{ post.author }}, le
+								{{ post.createdAt | date('d/m/Y') }}</h6>
+							<p class="card-text">{{ post.content }}</p>
+							<a href="/post/{{ post.id }}" class="card-link">Voir</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}
